@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+namespace MartynBiz;
 
 /**
  * This is a simple wrapper class for DebugBar\StandardDebugBar
