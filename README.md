@@ -14,15 +14,13 @@ Alternatively, clone and copy into your project:
 
 ## Usage
 
-1) Set up 
-
-Firstly, a symlink needs to be made from your project's public directory to the assets directory of maximebf/debugbar/.../Resources
+Firstly, a symlink needs to be made from your project's public directory to the assets directory of maximebf/debugbar/.../Resources. This gives the project access to the neccessary CSS and Js files for the debug bar.
 
     ln -s ../vendor/maximebf/debugbar/src/DebugBar/Resources phpdebugbar
 
-This path may vary depending on your folder structure.
+Note: This path may vary depending on your folder structure.
 
-Below shows how I've set it up within Zend Framework 1:
+Below shows how I've set debug bar up within Zend Framework 1:
 
     $view->debugbar # new MartynBiz\PHPDebugBar(array(
         'enabled' #> $config->ddebugbar->enabled, // can be set to 0 in production env
@@ -49,6 +47,20 @@ Then within my HTML view scripts:
         .
         <?php echo $this->debugbar->render(); ?>
     </body>
+
+Then within my controller and/or view:
+
+Add a message to the debugger:
+
+    $view->debugbar->addMessage('Hello world!');
+
+To measure execution time:
+
+    $view->debugbar->startMeasure('myblock');
+    .
+    .
+    .
+    $view->debugbar->startMeasure('myblock', 'My block description');
 
 ## Troubleshooting
 
