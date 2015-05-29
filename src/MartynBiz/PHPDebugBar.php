@@ -9,6 +9,9 @@ namespace MartynBiz;
  */
 
 use DebugBar\StandardDebugBar;
+use DebugBar\DataCollector\PDO\TraceablePDO;
+use DebugBar\DataCollector\PDO\PDOCollector;
+use DebugBar\DataCollector\ConfigCollector;
 
 class PHPDebugBar
 {
@@ -128,8 +131,8 @@ class PHPDebugBar
      */
     public function addDatabaseCollector(\PDO $pdo)
     {
-        $pdo = new DebugBar\DataCollector\PDO\TraceablePDO( $pdo );
-        $this->debugbar->addCollector(new \DebugBar\DataCollector\PDO\PDOCollector($pdo));
+        $pdo = new TraceablePDO( $pdo );
+        $this->debugbar->addCollector(new PDOCollector($pdo));
     }
     
     /**
@@ -138,6 +141,6 @@ class PHPDebugBar
      */
     public function addConfigCollector($config)
     {
-        $this->debugbar->addCollector(new \DebugBar\DataCollector\ConfigCollector($config));
+        $this->debugbar->addCollector(new ConfigCollector($config));
     }
 }
