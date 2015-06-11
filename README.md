@@ -26,12 +26,12 @@ Below shows how I've set debug bar up within Zend Framework 1:
         'enabled' #> $config->ddebugbar->enabled, // can be set to 0 in production env
         'base_url' #> 'phpdebugbar', // our symlink name to assets (js, css)
     ));
-
- // set pdo collector to output sql queries
- $view->debugbar->addDatabaseCollector($pdo); // pdo instance
-
- // set config to see what config settings have been applied
- $view->debugbar->addConfigCollector( $config->toArray() ); // config array
+    
+    // set pdo collector to output sql queries
+    $view->debugbar->addDatabaseCollector($pdo); // pdo instance
+    
+    // set config to see what config settings have been applied
+    $view->debugbar->addConfigCollector( $config->toArray() ); // config array
 
 Then within my HTML view scripts:
 
@@ -60,7 +60,7 @@ To measure execution time:
     .
     .
     .
-    $view->debugbar->startMeasure('myblock', 'My block description');
+    $view->debugbar->stopMeasure('myblock', 'My block description');
 
 ## Troubleshooting
 
